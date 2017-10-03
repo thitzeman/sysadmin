@@ -26,6 +26,9 @@ c$      #Changes until end of line
 o ; O   #Opens below, above -- enters you into Insert Mode
 a       #Insert text AFTER the cursor
 
+u       #Undo previous command
+CTL-r   #Re-do prevoius command
+
 CTL-G   #Shows location in the file and file status
 G       #Moves cursor to bottom of file
 gg      #Moves cursor to top of file
