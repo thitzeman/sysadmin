@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="sysadmin : Tutorials related to Linux System Engineering">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3224773572d7f2e2b264ee74018bd3d9b1fc62b7">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Add Synology NAS as a vSphere NTFS Datastore | sysadmin</title>
+<meta property="og:title" content="Add Synology NAS as a vSphere NTFS Datastore" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Tutorials related to Linux System Engineering" />
+<meta property="og:description" content="Tutorials related to Linux System Engineering" />
+<link rel="canonical" href="http://localhost:4000/virtualization/nas-datastore.html" />
+<meta property="og:url" content="http://localhost:4000/virtualization/nas-datastore.html" />
+<meta property="og:site_name" content="sysadmin" />
+<script type="application/ld+json">
+{"name":null,"description":"Tutorials related to Linux System Engineering","author":null,"@type":"WebPage","url":"http://localhost:4000/virtualization/nas-datastore.html","publisher":null,"image":null,"headline":"Add Synology NAS as a vSphere NTFS Datastore","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="http://github.com/tyler-hitzeman/sysadmin">View on GitHub</a>
+
+          <h1 id="project_title">sysadmin</h1>
+          <h2 id="project_tagline">Tutorials related to Linux System Engineering</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="add-synology-nas-as-a-vsphere-ntfs-datastore">Add Synology NAS as a vSphere NTFS Datastore</h1>
+<h4 id="reference">Reference:</h4>
+<p><a href="https://miketabor.com/setup-nfs-on-synology-nas-for-vmware-esxi-lab/">ESXi Lab Example</a></p>
+<h2 id="synology-nas-interface">Synology NAS Interface</h2>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<h2 id="vsphere-interface">vSphere Interface</h2>
+<h3 id="add-datastore">Add Datastore:</h3>
+<ul>
+  <li>Sign in to vCenter</li>
+  <li>Click DataCenter &gt; Datastore</li>
+  <li>New Datastore</li>
+  <li>Type: <code class="highlighter-rouge">NFS</code></li>
+  <li>Version: <code class="highlighter-rouge">NFS 3</code></li>
+  <li></li>
+</ul>
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+<h4 id="error-cannot-connect-datastore">Error: Cannot Connect Datastore</h4>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@esxi2:~] tail /var/log/vmkernel.log 
+2017-10-12T21:58:36.289Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>World: 15446: VC opID AddDatastoreWizard-addMulti-458547-ngc-c-9b-ac93 maps to vmkernel opID bd32da8
+2017-10-12T21:58:36.289Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>NFS41: NFS41_VSIMountSet:402: Mount server: 192.168.30.160, port: 2049, path: /volume1/vmware, label: Synology-NAS, security: 1 user: , options: &lt;none&gt;
+2017-10-12T21:58:36.289Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>StorageApdHandler: 982: APD Handle  Created with lock[StorageApd-0x430a28b09130]
+2017-10-12T21:58:36.289Z cpu26:33655<span class="o">)</span>WARNING: NFS41: NFS41ExidNFSProcess:2022: Server doesn<span class="s1">'t support the NFS 4.1 protocol
+2017-10-12T21:58:46.292Z cpu20:33655)WARNING: NFS41: NFS41ExidNFSProcess:2022: Server doesn'</span>t support the NFS 4.1 protocol
+2017-10-12T21:58:56.290Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>WARNING: NFS41: NFS41FSWaitForCluster:3433: Failed to <span class="nb">wait </span><span class="k">for </span>the cluster to be located: Timeout
+2017-10-12T21:58:56.290Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>WARNING: NFS41: NFS41_FSMount:4412: NFS41FSDoMount failed: Timeout
+2017-10-12T21:58:56.290Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>StorageApdHandler: 1066: Freeing APD handle 0x430a28b09130 <span class="o">[]</span>
+2017-10-12T21:58:56.290Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>StorageApdHandler: 1150: APD Handle freed!
+2017-10-12T21:58:56.290Z cpu37:34871 <span class="nv">opID</span><span class="o">=</span>bd32da8<span class="o">)</span>WARNING: NFS41: NFS41_VSIMountSet:410: NFS41_FSMount failed: Timeout
+</code></pre>
+</div>
+
+<h4 id="potential-solution-as-of-102017-synolosy-dsm-6-does-not-support-nfs-41-use-version-3-instead">Potential Solution: As of 10/2017, Synolosy DSM 6 does not support NFS 4.1. Use version 3 instead.</h4>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">sysadmin maintained by <a href="http://github.com/tyler-hitzeman">tyler-hitzeman</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

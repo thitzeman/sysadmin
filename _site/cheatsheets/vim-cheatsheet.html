@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="sysadmin : Tutorials related to Linux System Engineering">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=3224773572d7f2e2b264ee74018bd3d9b1fc62b7">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>VIM CHEATSHEET | sysadmin</title>
+<meta property="og:title" content="VIM CHEATSHEET" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Tutorials related to Linux System Engineering" />
+<meta property="og:description" content="Tutorials related to Linux System Engineering" />
+<link rel="canonical" href="http://localhost:4000/cheatsheets/vim-cheatsheet.html" />
+<meta property="og:url" content="http://localhost:4000/cheatsheets/vim-cheatsheet.html" />
+<meta property="og:site_name" content="sysadmin" />
+<script type="application/ld+json">
+{"name":null,"description":"Tutorials related to Linux System Engineering","author":null,"@type":"WebPage","url":"http://localhost:4000/cheatsheets/vim-cheatsheet.html","publisher":null,"image":null,"headline":"VIM CHEATSHEET","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="http://github.com/tyler-hitzeman/sysadmin">View on GitHub</a>
+
+          <h1 id="project_title">sysadmin</h1>
+          <h2 id="project_tagline">Tutorials related to Linux System Engineering</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="vim-cheatsheet">VIM CHEATSHEET</h1>
+
+<h2 id="getting-help">Getting Help</h2>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>:help           <span class="c">#Opens VIM help window in terminal</span>
+CTRL-W CTRL-W   <span class="c">#Jump from help window</span>
+CTRL-J          <span class="c">#Jump</span>
+CTRL-T CTRL-O   <span class="c">#Return to previous location</span>
+F1              <span class="c">#Opens OS help window</span>
+</code></pre>
+</div>
+<h2 id="common-tasks">Common Tasks</h2>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>A       <span class="c">#Appends cursor to end of line and enters insert mode</span>
+dw      <span class="c">#Deletes word</span>
+<span class="gp">d$      </span><span class="c">#Deletes to end of line</span>
+de      <span class="c">#Deletes to end of current word </span>
+dd      <span class="c">#Deletes entire line</span>
+2w      <span class="c">#Moves cursor 2 words forward</span>
+3e      <span class="c">#Moves cursor to end of third word forward</span>
+0       <span class="c">#Moves cursor to start of line</span>
+p       <span class="c">#Puts previously deleted text below the cursor</span>
+r<span class="o">{</span>x<span class="o">}</span>    <span class="c">#Replaces text with the letter after r</span>
+R       <span class="c">#Replaces more than one character, entering you into Insert Mode</span>
+ce      <span class="c">#Changes until end of a word and enter Insert Mode. This is a better option than d[motion] when you want to insert text</span>
+<span class="gp">c$      </span><span class="c">#Changes until end of line</span>
+o ; O   <span class="c">#Opens below, above -- enters you into Insert Mode</span>
+a       <span class="c">#Insert text AFTER the cursor</span>
+
+u       <span class="c">#Undo previous command</span>
+CTL-r   <span class="c">#Re-do prevoius command</span>
+
+CTL-G   <span class="c">#Shows location in the file and file status</span>
+G       <span class="c">#Moves cursor to bottom of file</span>
+gg      <span class="c">#Moves cursor to top of file</span>
+<span class="o">{</span><span class="c">#}G    #Moves cursor to the given line number</span>
+:<span class="o">{</span><span class="c">#}    #Moves cursor to the given line number</span>
+y       <span class="c">#Yanks (pastes) text</span>
+            EXAMPLE 1:
+                yw  <span class="c">#Yanks word</span>
+            EXAMPLE 2:
+                v       <span class="c">#Enters visual mode</span>
+                ARROWS  <span class="c">#Highlights command</span>
+                y       <span class="c">#Enters yank mode</span>
+                j<span class="nv">$ </span>     <span class="c">#Moves cursor to end of line (highlighting)</span>
+                p       <span class="c">#Puts (pastes) the text</span>
+                ESC     <span class="c">#Exits visual mode</span>
+</code></pre>
+</div>
+<h3 id="advanced-tasks">Advanced Tasks</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>:!                          <span class="c">#Executes external shell command</span>
+v <span class="o">{</span>motion<span class="o">}</span> :w FILENAME      <span class="c">#Saves part of the file that you highlighted to current directory</span>
+:r FILENAME                 <span class="c">#Retrieves the highlighted text that you previously saved and enter it into current VIM session</span>
+:r !COMMAND <span class="o">[</span>e.g. <span class="sb">`</span>:r !ls]  <span class="c">#Reads the output of an external command in the VIM session. Useful for log review.</span>
+</code></pre>
+</div>
+<h3 id="searching">Searching</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>/<span class="o">{</span>search<span class="o">}</span>          <span class="c">#Searches for results in file</span>
+    n                  <span class="c">#Cycles forward through results</span>
+    N                  <span class="c">#Cycles backwards through results</span>
+<span class="gp">%                  </span><span class="c">#When cursor is over a (, [, or {, this finds the matching closing symbol.</span>
+</code></pre>
+</div>
+<h3 id="substitution">Substitution</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>:s/old/new/g        <span class="c">#Substitutes 'old' for 'new' in current line only</span>
+:s/old/new/gc       <span class="c">#Globally substitutes 'old' for 'new', prompting for confirmation for each substitution</span>
+:%s/old/new/g       <span class="c">#Globally substitutes 'old' for 'new' without prompting for confirmation</span>
+:#,#s/old/new/g     <span class="c">#Substitutes 'old' for 'new', where #,# are the line numbers of the range of lines to substitute  </span>
+</code></pre>
+</div>
+<h3 id="ignoring-case">Ignoring Case</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>EXAMPLE 1:      
+    /ignore<span class="se">\c</span>       <span class="c">#Searches for 'ignore' and ignores case</span>
+EXAMPLE 2:
+    /ignore         <span class="c">#Searches for 'ignore'</span>
+    :set ic         <span class="c">#Sets 'ignore case' option</span>
+    :set hls is     <span class="c">#Sets hlsearch in search options</span>
+    /ignore         <span class="c">#Type command again for new options to take effect</span>
+    :set noic       <span class="c">#Disables ignoring case again</span>
+    :nohls          <span class="c">#Disables highlighting</span>
+</code></pre>
+</div>
+<h3 id="commenting-out-blocks-of-text">Commenting Out Blocks of Text:</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ESC
+CTRL+v <span class="o">(</span>visual block mode<span class="o">)</span>
+up/down arrow
+SHIFT + I  <span class="c">#Or whatever text you want to include</span>
+ESC
+</code></pre>
+</div>
+<h3 id="uncommenting-blocks-of-text">Uncommenting Blocks of Text:</h3>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ESC
+CTRL + v 	<span class="c">#Enters visual block mode</span>
+<span class="o">(</span>up/down arrow to <span class="k">select </span>lines to uncomment<span class="o">)</span>
+x       	<span class="c">#Deletes comments</span>
+ESC         <span class="c">#Exits visual block mode</span>
+</code></pre>
+</div>
+
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">sysadmin maintained by <a href="http://github.com/tyler-hitzeman">tyler-hitzeman</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
