@@ -2,7 +2,9 @@
 #### Reference:
 [ESXi Lab Example](https://miketabor.com/setup-nfs-on-synology-nas-for-vmware-esxi-lab/)
 ## Synology NAS Interface
-
+- 
+- 
+- 
 
 ## vSphere Interface
 ### Add Datastore:
