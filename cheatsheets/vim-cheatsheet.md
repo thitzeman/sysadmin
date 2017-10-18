@@ -51,6 +51,9 @@ y       #Yanks (pastes) text
 v {motion} :w FILENAME      #Saves part of the file that you highlighted to current directory
 :r FILENAME                 #Retrieves the highlighted text that you previously saved and enter it into current VIM session
 :r !COMMAND [e.g. `:r !ls]  #Reads the output of an external command in the VIM session. Useful for log review.
+m(x)                        #Marks point in file, where (x) is any lowercase character
+`(x)                        #Returns to the exact mark point
+'(x)                        #Returns to the beginning of the mark point's line
 ```
 ### Searching
 ```bash
