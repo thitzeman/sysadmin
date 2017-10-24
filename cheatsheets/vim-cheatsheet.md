@@ -98,3 +98,10 @@ x       	#Deletes comments
 ESC         #Exits visual block mode
 ```
 
+### Column Edit Mode
+- `CTRL + V` to enter Column Mode
+- Select columns and rows you want to edit
+- `SHIFT + i` to enter Column Insert Mode
+- Type in or delete text you want to change
+            - Only the first row will be changed at this step
+- `Esc` to apply changes
