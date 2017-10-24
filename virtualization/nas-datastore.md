@@ -1,20 +1,25 @@
 # Add Synology NAS as a vSphere NTFS Datastore
 #### Reference:
 [ESXi Lab Example](https://miketabor.com/setup-nfs-on-synology-nas-for-vmware-esxi-lab/)
-## Synology NAS Interface
+## Synology NAS Interface:
 - 
 - 
 - 
 
-## vSphere Interface
+## vSphere Interface:
 ### Add Datastore:
 - Sign in to vCenter
 - Click DataCenter > Datastore
 - New Datastore
 - Type: `NFS`
 - Version: `NFS 3`
-- 
-
+- Datastore name: `Enter Name`
+    - I like to use the NAS's IP
+- Folder: `/Synology/NAS/mount/path`
+    - For example: `/volumeA/vmware`
+- Server: `IP address`
+- Do *not* check the box that says `Mount NFS as read only`
+- Finish
 
 ### Troubleshooting
 #### Error: Cannot Connect Datastore
