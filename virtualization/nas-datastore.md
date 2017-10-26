@@ -2,9 +2,10 @@
 #### Reference:
 [ESXi Lab Example](https://miketabor.com/setup-nfs-on-synology-nas-for-vmware-esxi-lab/)
 ## Synology NAS Interface:
-- 
-- 
-- 
+These are the general steps. Consult Synology's documentation for more details. 
+- Create Shared Folder
+- Share folder with VMware host IP addresses
+    - Allow sub-mounting
 
 ## vSphere Interface:
 ### Add Datastore:
