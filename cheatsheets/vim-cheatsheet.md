@@ -86,7 +86,8 @@ EXAMPLE 2:
 ESC
 CTRL+v (visual block mode)
 up/down arrow
-SHIFT + I  #Or whatever text you want to include
+SHIFT + I   # You should be directed to the beginning of the visual block and enter INSERT MODE
+#           # This will insert a hashtag (#) for each of the highlighted lines
 ESC
 ```
 ### Uncommenting Blocks of Text:
