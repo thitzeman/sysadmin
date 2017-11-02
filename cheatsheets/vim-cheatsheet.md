@@ -62,6 +62,9 @@ m(x)                        #Marks point in file, where (x) is any lowercase cha
     N                  #Cycles backwards through results
 %                  #When cursor is over a (, [, or {, this finds the matching closing symbol.
 ```
+### History
+:his                    # Print history
+:<up/down arrow>        # Scroll through history
 ### Substitution
 ```bash
 :s/old/new/g        #Substitutes 'old' for 'new' in current line only
